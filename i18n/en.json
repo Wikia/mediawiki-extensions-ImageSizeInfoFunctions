@@ -3,5 +3,6 @@
 		"authors": ["Tim \"Telshin\" Aldridge"]
 	},
 	"imagesizeinfofunctions_description": "Enhance parser with image size info functions",
-	"ifunc_error": "Error"
+	"error_returning_width": "Error returning width",
+	"error_returning_height": "Error returning height"
 }
