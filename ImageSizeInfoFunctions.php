@@ -27,8 +27,8 @@ $wgExtensionCredits['other'][] = $credits;
 /******************************************/
 $extDir = __DIR__;
 
-$wgExtensionMessageFiles['ImageSizeInfoFunctions']			= $extDir . "/ImageSizeInfoFunctions.i18n.php";
-$wgExtensionMessageFiles['ImageSizeInfoFunctionsMagic']		= $extDir . "/ImageSizeInfoFunctions.i18n.magic.php";
+$wgExtensionMessagesFiles['ImageSizeInfoFunctions']			= $extDir . "/ImageSizeInfoFunctions.i18n.php";
+$wgExtensionMessagesFiles['ImageSizeInfoFunctionsMagic']	= $extDir . "/ImageSizeInfoFunctions.i18n.magic.php";
 $wgMessagesDir['ImageSizeInfoFunctions']					= $extDir . "/i18n";
 
 $wgAutoloadClasses['ImageSizeInfoFunctionsHooks']			= $extDir . "/ImageSizeInfoFunctions.hooks.php";

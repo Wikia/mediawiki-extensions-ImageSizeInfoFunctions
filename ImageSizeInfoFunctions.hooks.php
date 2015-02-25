@@ -18,8 +18,9 @@ class ImageSizeInfoFunctionsHooks {
 	 * @return	boolean	true
 	 */
 	static public function onParserFirstCallInit( Parser &$parser ) {
-		$parser->setFunctionHook( "imgw", "ImageSizeInfoFunctionHooks::getImageWidth");
-		$parser->setFunctionHook( "imgh", "ImageSizeInfoFunctionHooks::getImageHeight");
+		$parser->setFunctionHook( "imgw", "ImageSizeInfoFunctionsHooks::getImageWidth");
+		$parser->setFunctionHook( "imgh", "ImageSizeInfoFunctionsHooks::getImageHeight");
+
 		return true;
 	}
 
