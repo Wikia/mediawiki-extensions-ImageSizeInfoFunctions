@@ -16,7 +16,7 @@ $credits = [
 	'path'				=>	__FILE__,
 	'name'				=>	'ImageSizeInfoFunctions',
 	'url'				=>	'http://www.mediawiki.org/wiki/Extension:ImageSizeInfoFunctions',
-	'author'			=>	array( 'Dario de Judicibus', 'Curse Inc', 'Wiki Platform Team'),
+	'author'			=>	array( 'Dario de Judicibus'),
 	'descriptionmsg'	=>	'imagesizeinfofunctions_description',
 	'version'			=>	'1.1.0'
 ];

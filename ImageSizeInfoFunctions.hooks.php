@@ -58,7 +58,7 @@ class ImageSizeInfoFunctionsHooks {
 	 *
 	 * @param	$parser	Parser object passed a reference
 	 * @param	string	Name of the image being parsed in
-	 * @return	mixed	integer of the width or error message.
+	 * @return	mixed	integer of the height or error message.
 	 */
 	static public function getImageHeight( &$parser, $image = '' ) {
 		try {
