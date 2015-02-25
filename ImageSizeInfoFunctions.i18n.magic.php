@@ -3,7 +3,6 @@
  * ImageSizeInfoFunctions
  * ImageSizeInfoFunctions Magic Words
  *
- * @author		Tim Aldridge
  * @license		GNU GPL v2.0
  * @package		ImageSizeInfoFunctions
  * @link		https://github.com/CurseStaff/ImageSizeInfoFunctions
