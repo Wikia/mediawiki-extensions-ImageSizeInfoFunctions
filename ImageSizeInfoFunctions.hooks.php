@@ -35,6 +35,13 @@ class ImageSizeInfoFunctionsHooks {
 		return true;
 	}
 
+	/**
+	 * Function to get the width of the image.
+	 *
+	 * @param	$parser	Parser object passed a reference
+	 * @param	string	Name of the image being parsed in
+	 * @return	mixed	integer of the width or error message.
+	 */
 	static public function getImageWidth( &$parser, $image = '' ) {
 		try {
 			$title = Title::newFromText( $image, NS_IMAGE );
@@ -46,6 +53,13 @@ class ImageSizeInfoFunctionsHooks {
 		}
 	}
 
+	/**
+	 * Function to get the height of the image.
+	 *
+	 * @param	$parser	Parser object passed a reference
+	 * @param	string	Name of the image being parsed in
+	 * @return	mixed	integer of the width or error message.
+	 */
 	static public function getImageHeight( &$parser, $image = '' ) {
 		try {
 			$title = Title::newFromText( $image, NS_IMAGE );
