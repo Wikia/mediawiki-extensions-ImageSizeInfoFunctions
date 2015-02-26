@@ -2,5 +2,7 @@
 	"@metadata": {
 		"authors": ["Tim \"Telshin\" Aldridge"]
 	},
-	"ifunc_error": "Fout"
+	"imagesizeinfofunctions_description": "Enhance parser with image size info functions",
+	"error_returning_width": "Fout terugkeren breedte",
+	"error_returning_height": "Fout terugkeren hoogte"
 }
