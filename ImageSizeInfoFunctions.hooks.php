@@ -43,7 +43,7 @@ class ImageSizeInfoFunctionsHooks {
 	 */
 	static public function getImageWidth( &$parser, $image = '' ) {
 		try {
-			$title = Title::newFromText( $image, NS_IMAGE );
+			$title = Title::newFromText( $image, NS_FILE );
 			$file = wfFindFile( $title );
 			$width = ( is_object( $file ) && $file->exists() ) ? $file->getWidth() : 0;
 			return $width;
@@ -61,7 +61,7 @@ class ImageSizeInfoFunctionsHooks {
 	 */
 	static public function getImageHeight( &$parser, $image = '' ) {
 		try {
-			$title = Title::newFromText( $image, NS_IMAGE );
+			$title = Title::newFromText( $image, NS_FILE );
 			$file = wfFindFile( $title );
 			$height = ( is_object( $file ) && $file->exists() ) ? $file->getHeight() : 0;
 			return $height;
