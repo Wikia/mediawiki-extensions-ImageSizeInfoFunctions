@@ -42,6 +42,9 @@ class ImageSizeInfoFunctionsHooks {
 	 * @return	mixed	integer of the width or error message.
 	 */
 	static public function getImageWidth( &$parser, $image = '' ) {
+		if ( !$parser->incrementExpensiveFunctionCount() ) {
+			return wfMessage( 'error_returning_width' )->text();
+		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
 			$file = wfFindFile( $title );
@@ -60,6 +63,9 @@ class ImageSizeInfoFunctionsHooks {
 	 * @return	mixed	integer of the height or error message.
 	 */
 	static public function getImageHeight( &$parser, $image = '' ) {
+		if ( !$parser->incrementExpensiveFunctionCount() ) {
+			return wfMessage( 'error_returning_height' )->text();
+		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
 			$file = wfFindFile( $title );
