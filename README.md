@@ -5,8 +5,11 @@ ImageSizeInfoFunctions is an extension to MediaWiki that gives two parser functi
 
 Installation
 ------------
-To install this extension, download the extension into a folder called ImageSizeInfoFunctions under the extensions directory then add the follwoing lines to the end of the LocalSettings.php file:
-```
-// ImageSizeInfoFunctions
-require("$IP/extensions/ImageSizeInfoFunctions/ImageSizeInfoFunctions.php");
-```
+
+* Download this repository and place the contents in `extensions/ImageSizeInfoFunction/` (in your root MediaWiki directory)
+* Add `wfLoadExtension('ImageSizeInfoFunction');` to LocalSettings.php to include the extension
+
+Usage
+-----
+
+Full documentation on how to use this extension is available at the [official MediaWiki extension page.](https://www.mediawiki.org/wiki/Extension:ImageSizeInfoFunctions)
