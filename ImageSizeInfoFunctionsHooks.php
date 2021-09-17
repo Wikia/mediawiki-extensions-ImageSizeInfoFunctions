@@ -3,22 +3,21 @@
  * ImageSizeInfoFunctions
  * ImageSizeInfoFunctions Hooks
  *
- * @license		GNU GPL v2.0
+ * @license		GPL-2.0-or-later
  * @package		ImageSizeInfoFunctions
  * @link		https://github.com/CurseStaff/ImageSizeInfoFunctions
  *
- **/
+ */
 class ImageSizeInfoFunctionsHooks {
 	/**
 	 * Sets up this extension's parser functions.
 	 *
-	 * @access	public
-	 * @param	object	Parser object passed as a reference.
-	 * @return	boolean	true
+	 * @param Parser $parser Parser object passed as a reference.
+	 * @return bool true
 	 */
-	static public function onParserFirstCallInit( Parser &$parser ) {
-		$parser->setFunctionHook( "imgw", "ImageSizeInfoFunctionsHooks::getImageWidth");
-		$parser->setFunctionHook( "imgh", "ImageSizeInfoFunctionsHooks::getImageHeight");
+	public static function onParserFirstCallInit( Parser $parser ) {
+		$parser->setFunctionHook( "imgw", "ImageSizeInfoFunctionsHooks::getImageWidth" );
+		$parser->setFunctionHook( "imgh", "ImageSizeInfoFunctionsHooks::getImageHeight" );
 
 		return true;
 	}
@@ -27,21 +26,21 @@ class ImageSizeInfoFunctionsHooks {
 	 * Function for when the parser object is being cleared.
 	 * @see	https://www.mediawiki.org/wiki/Manual:Hooks/ParserClearState
 	 *
-	 * @param $parser
+	 * @param Parser $parser
 	 * @return bool
 	 */
-	static public function onParserClearState( &$parser ) {
+	public static function onParserClearState( Parser $parser ) {
 		return true;
 	}
 
 	/**
 	 * Function to get the width of the image.
 	 *
-	 * @param	$parser	Parser object passed a reference
-	 * @param	string	Name of the image being parsed in
-	 * @return	mixed	integer of the width or error message.
+	 * @param Parser $parser object passed a reference
+	 * @param string $image Name of the image being parsed in
+	 * @return mixed integer of the width or error message.
 	 */
-	static public function getImageWidth( &$parser, $image = '' ) {
+	public static function getImageWidth( Parser $parser, $image = '' ) {
 		if ( !$parser->incrementExpensiveFunctionCount() ) {
 			return wfMessage( 'error_returning_width' )->text();
 		}
@@ -58,11 +57,11 @@ class ImageSizeInfoFunctionsHooks {
 	/**
 	 * Function to get the height of the image.
 	 *
-	 * @param	$parser	Parser object passed a reference
-	 * @param	string	Name of the image being parsed in
-	 * @return	mixed	integer of the height or error message.
+	 * @param Parser $parser Parser object passed a reference
+	 * @param string $image Name of the image being parsed in
+	 * @return mixed integer of the height or error message.
 	 */
-	static public function getImageHeight( &$parser, $image = '' ) {
+	public static function getImageHeight( Parser $parser, $image = '' ) {
 		if ( !$parser->incrementExpensiveFunctionCount() ) {
 			return wfMessage( 'error_returning_height' )->text();
 		}
