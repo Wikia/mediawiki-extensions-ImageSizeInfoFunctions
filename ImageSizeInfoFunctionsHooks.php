@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * ImageSizeInfoFunctions
  * ImageSizeInfoFunctions Hooks
@@ -46,7 +49,7 @@ class ImageSizeInfoFunctionsHooks {
 		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
-			$file = wfFindFile( $title );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 			$width = ( is_object( $file ) && $file->exists() ) ? $file->getWidth() : 0;
 			return $width;
 		} catch ( Exception $e ) {
@@ -67,7 +70,7 @@ class ImageSizeInfoFunctionsHooks {
 		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
-			$file = wfFindFile( $title );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 			$height = ( is_object( $file ) && $file->exists() ) ? $file->getHeight() : 0;
 			return $height;
 		} catch ( Exception $e ) {
