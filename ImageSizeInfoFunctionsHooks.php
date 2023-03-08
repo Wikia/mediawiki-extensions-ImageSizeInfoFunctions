@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Hook\ParserFirstCallInitHook;
 
 /**
  * ImageSizeInfoFunctions
@@ -11,28 +11,24 @@ use MediaWiki\MediaWikiServices;
  * @link		https://github.com/CurseStaff/ImageSizeInfoFunctions
  *
  */
-class ImageSizeInfoFunctionsHooks {
+class ImageSizeInfoFunctionsHooks implements ParserFirstCallInitHook {
+
+	/**
+	 * @param RepoGroup $repoGroup
+	 */
+	public function __construct( private RepoGroup $repoGroup ) {
+	}
+
 	/**
 	 * Sets up this extension's parser functions.
 	 *
 	 * @param Parser $parser Parser object passed as a reference.
 	 * @return bool true
 	 */
-	public static function onParserFirstCallInit( Parser $parser ) {
-		$parser->setFunctionHook( "imgw", "ImageSizeInfoFunctionsHooks::getImageWidth" );
-		$parser->setFunctionHook( "imgh", "ImageSizeInfoFunctionsHooks::getImageHeight" );
+	public function onParserFirstCallInit( $parser ): bool {
+		$parser->setFunctionHook( "imgw", [ $this, 'getImageWidth' ] );
+		$parser->setFunctionHook( "imgh", [ $this, 'getImageHeight' ] );
 
-		return true;
-	}
-
-	/**
-	 * Function for when the parser object is being cleared.
-	 * @see	https://www.mediawiki.org/wiki/Manual:Hooks/ParserClearState
-	 *
-	 * @param Parser $parser
-	 * @return bool
-	 */
-	public static function onParserClearState( Parser $parser ) {
 		return true;
 	}
 
@@ -43,13 +39,13 @@ class ImageSizeInfoFunctionsHooks {
 	 * @param string $image Name of the image being parsed in
 	 * @return mixed integer of the width or error message.
 	 */
-	public static function getImageWidth( Parser $parser, $image = '' ) {
+	public function getImageWidth( Parser $parser, $image = '' ) {
 		if ( !$parser->incrementExpensiveFunctionCount() ) {
 			return wfMessage( 'error_returning_width' )->text();
 		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+			$file = $this->repoGroup->findFile( $title );
 			$width = ( is_object( $file ) && $file->exists() ) ? $file->getWidth() : 0;
 			return $width;
 		} catch ( Exception $e ) {
@@ -64,13 +60,13 @@ class ImageSizeInfoFunctionsHooks {
 	 * @param string $image Name of the image being parsed in
 	 * @return mixed integer of the height or error message.
 	 */
-	public static function getImageHeight( Parser $parser, $image = '' ) {
+	public function getImageHeight( Parser $parser, $image = '' ) {
 		if ( !$parser->incrementExpensiveFunctionCount() ) {
 			return wfMessage( 'error_returning_height' )->text();
 		}
 		try {
 			$title = Title::newFromText( $image, NS_FILE );
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+			$file = $this->repoGroup->findFile( $title );
 			$height = ( is_object( $file ) && $file->exists() ) ? $file->getHeight() : 0;
 			return $height;
 		} catch ( Exception $e ) {
