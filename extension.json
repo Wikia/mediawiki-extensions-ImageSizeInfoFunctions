@@ -23,7 +23,9 @@
 	"HookHandlers": {
 		"main": {
 			"class": "ImageSizeInfoFunctionsHooks",
-			"services": ["RepoGroup"]
+			"services": [
+				"RepoGroup"
+			]
 		}
 	},
 	"Hooks": {
